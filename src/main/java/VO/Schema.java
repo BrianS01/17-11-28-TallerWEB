@@ -8,12 +8,15 @@ package VO;
 public class Schema
 {
     private String name;
-    public Table tables;
 
+    public Schema(Table tables)
+    {
+        tables = new Table();
+    }        
+            
     public Schema(String name, Table tables)
     {
         this.name = name;
-        this.tables = tables;
     }
 
     public String getName()
@@ -26,19 +29,9 @@ public class Schema
         this.name = name;
     }
 
-    public Table getTables()
-    {
-        return tables;
-    }
-
-    public void setTables(Table tables)
-    {
-        this.tables = tables;
-    }
-
     @Override
     public String toString()
     {
-        return "Schema{" + "name=" + name + ", tables=" + tables + '}';
+        return "Schema{" + "name=" + name + '}';
     }
 }

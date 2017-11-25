@@ -5,26 +5,26 @@
  */
 package VO;
 
-/**
- *
- * @author BRIAN
- */
 public class Table
 {
     public String name;
     public int oid;
-    public Key keys;
+    private Key keys;
     public ForeignKey tables;
-    public ForeignKey foreignKey;
     public ViewComponent source;
+    private ForeignKey foreignKey;
+    
+    public Table()
+    {}
 
-    public Table(String name, int oid, Key keys, ForeignKey tables, ForeignKey foreignKey, ViewComponent source) {
+    public Table(String name, int oid, Key keys, ForeignKey tables, ViewComponent source, ForeignKey foreignKey)
+    {
         this.name = name;
         this.oid = oid;
         this.keys = keys;
         this.tables = tables;
-        this.foreignKey = foreignKey;
         this.source = source;
+        this.foreignKey = foreignKey;
     }
 
     public String getName() {
@@ -59,14 +59,6 @@ public class Table
         this.tables = tables;
     }
 
-    public ForeignKey getForeignKey() {
-        return foreignKey;
-    }
-
-    public void setForeignKey(ForeignKey foreignKey) {
-        this.foreignKey = foreignKey;
-    }
-
     public ViewComponent getSource() {
         return source;
     }
@@ -75,8 +67,11 @@ public class Table
         this.source = source;
     }
 
-    @Override
-    public String toString() {
-        return "Table{" + "name=" + name + ", oid=" + oid + ", keys=" + keys + ", tables=" + tables + ", foreignKey=" + foreignKey + ", source=" + source + '}';
+    public ForeignKey getForeignKey() {
+        return foreignKey;
+    }
+
+    public void setForeignKey(ForeignKey foreignKey) {
+        this.foreignKey = foreignKey;
     }
 }

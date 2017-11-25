@@ -53,7 +53,4 @@ public class Application
     public String toString() {
         return "Application{" + "name=" + name + ", description=" + description + ", domainModel=" + domainModel + ", vistaContenida=" + vistaContenida + '}';
     }
-
-    
-    
 }

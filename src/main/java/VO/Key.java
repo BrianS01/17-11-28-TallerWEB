@@ -9,6 +9,14 @@ package VO;
  *
  * @author BRIAN
  */
-public class Key {
+public class Key extends Column
+{
+    public Key(String name, String type, int size, String defaultValue, boolean isRequired, boolean acceptNull, String alias, String comment, String helpMessage)
+    {
+        super(name, type, size, defaultValue, isRequired, acceptNull, alias, comment, helpMessage);
+    }
+
+    
+
     
 }
