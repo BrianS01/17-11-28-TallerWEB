@@ -5,12 +5,12 @@
  */
 package VO;
 
-public class List
+public class List extends ViewComponent
 {
     private Column display;
 
     public List()
     {
-        Column display= new Column();
-    } 
+        Column display = new Column();
+    }   
 }

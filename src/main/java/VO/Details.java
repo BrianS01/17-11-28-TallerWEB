@@ -5,5 +5,8 @@
  */
 package VO;
 
-public class ViewComponent extends ViewElement
-{}
+public class Details extends ViewComponent
+{
+    public Details()
+    {}
+}

@@ -5,5 +5,10 @@
  */
 package VO;
 
-public class ViewComponent extends ViewElement
-{}
+/**
+ *
+ * @author BRIAN
+ */
+class ViewElement {
+    
+}

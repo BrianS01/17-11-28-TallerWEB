@@ -5,7 +5,7 @@
  */
 package VO;
 
-public class Form
+public class Form extends ViewComponent
 {
     private Field field;
 
