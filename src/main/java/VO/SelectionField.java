@@ -9,6 +9,6 @@ package VO;
  *
  * @author BRIAN
  */
-public class Paramater {
+public class SelectionField {
     
 }
