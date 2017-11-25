@@ -8,7 +8,13 @@ package VO;
 public abstract class ViewElement
 {
     private String name;
-
+    private InteractionFlow interactionFlow;
+    
+    public ViewElement()
+    {
+        InteractionFlow interactionFlow = new InteractionFlow() {};
+    }
+    
     public String getName()
     {
         return name;

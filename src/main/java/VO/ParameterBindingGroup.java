@@ -5,11 +5,29 @@
  */
 package VO;
 
-/**
- *
- * @author BRIAN
- */
 public class ParameterBindingGroup
 {
-    
+    private int id;
+    private ParameterBinding parameterBinding;
+
+    public ParameterBindingGroup()
+    {
+        ParameterBinding parameterBinding = new ParameterBinding();
+    }
+
+    public int getId()
+    {
+        return id;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "ParameterBindingGroup{" + "id=" + id + ", parameterBinding=" + parameterBinding + '}';
+    } 
 }
