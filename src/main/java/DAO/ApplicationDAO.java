@@ -1,7 +1,7 @@
 /*
  *  Taller WEB
  *   co-Author :::   Juan Albarracin
- *   co-Author :::  Mario Bolaños
+ *   co-Author :::  Mario BolaÃ±os
  *   co-Author ::: Sergio Orozco
  *   co-Author :::  Brian Sterling
  *     Program ::: Bases de Datos
@@ -25,21 +25,19 @@ public class ApplicationDAO
 {
     private Connection connection;
 
-    public UserDao()
+    public ApplicationDAO()
     {
         connection = DbUtil.getConnection();
     }
 
-    public void addUser(User user)
+    public void addUser(Application user)
     {
         try
         {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into users(firstname,lastname,dob,email) values (?, ?, ?, ? )");
-            // Parameters start with 1
-            preparedStatement.setString(1, user.getFirstName());
-            preparedStatement.setString(2, user.getLastName());
-            preparedStatement.setDate(3, new java.sql.Date(user.getDob().getTime()));
-            preparedStatement.setString(4, user.getEmail());
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into application(name,description) values (?, ?)");
+            preparedStatement.setInt(1, user.getIdApplication());
+            preparedStatement.setString(2, user.getName());
+            preparedStatement.setString(3, user.getDescription());
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -48,13 +46,12 @@ public class ApplicationDAO
         }
     }
 
-    public void deleteUser(int userId)
+    public void deleteUser(int idApplication)
     {
         try
         {
-            PreparedStatement preparedStatement = connection.prepareStatement("delete from users where userid=?");
-            // Parameters start with 1
-            preparedStatement.setInt(1, userId);
+            PreparedStatement preparedStatement = connection.prepareStatement("delete from application where idApplication=?");
+            preparedStatement.setInt(1, idApplication);
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -63,17 +60,14 @@ public class ApplicationDAO
         }
     }
 
-    public void updateUser(User user)
+    public void updateUser(Application user)
     {
         try 
         {
-            PreparedStatement preparedStatement = connection.prepareStatement("update users set firstname=?, lastname=?, dob=?, email=?" + "where userid=?");
-            // Parameters start with 1
-            preparedStatement.setString(1, user.getFirstName());
-            preparedStatement.setString(2, user.getLastName());
-            preparedStatement.setDate(3, new java.sql.Date(user.getDob().getTime()));
-            preparedStatement.setString(4, user.getEmail());
-            preparedStatement.setInt(5, user.getUserid());
+            PreparedStatement preparedStatement = connection.prepareStatement("update application set name=?, description=?" + "where idApplication=?");
+            preparedStatement.setInt(1, user.getIdApplication());
+            preparedStatement.setString(2, user.getName());
+            preparedStatement.setString(3, user.getDescription());
             preparedStatement.executeUpdate();
         }
         catch (SQLException e)
@@ -82,22 +76,21 @@ public class ApplicationDAO
         }
     }
 
-    public List<User> getAllUsers()
+    public List<Application> getAllUsers()
     {
-        List<User> users = new ArrayList<User>();
+        List<Application> users = new ArrayList<Application>();
         try
         {
-            System.out.println("LLegue hasta aca");
+            System.out.println("Llegue hasta aca");
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery("select * from users");
+            
             while (rs.next())
             {
-                User user = new User();
-                user.setUserid(rs.getInt("userid"));
-                user.setFirstName(rs.getString("firstname"));
-                user.setLastName(rs.getString("lastname"));
-                user.setDob(rs.getDate("dob"));
-                user.setEmail(rs.getString("email"));
+                Application user = new Application();
+                user.setIdApplication(rs.getInt("idApplication"));
+                user.setName(rs.getString("name"));
+                user.setDescription(rs.getString("description"));
                 users.add(user);
             }
         }
@@ -108,9 +101,9 @@ public class ApplicationDAO
         return users;
     }
 
-    public User getUserById(int userId)
+    public Application getUserById(int userId)
     {
-        User user = new User();
+        Application user = new Application();
         try
         {
             PreparedStatement preparedStatement = connection.prepareStatement("select * from users where userid=?");
@@ -118,11 +111,9 @@ public class ApplicationDAO
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next())
             {
-                user.setUserid(rs.getInt("userid"));
-                user.setFirstName(rs.getString("firstname"));
-                user.setLastName(rs.getString("lastname"));
-                user.setDob(rs.getDate("dob"));
-                user.setEmail(rs.getString("email"));
+                user.setIdApplication(rs.getInt("idApplication"));
+                user.setName(rs.getString("name"));
+                user.setDescription(rs.getString("description"));
             }
         }
         catch (SQLException e)
@@ -131,6 +122,4 @@ public class ApplicationDAO
         }
         return user;
     }
-}
-    
 }

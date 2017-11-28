@@ -12,6 +12,7 @@ package VO;
 
 public class Application
 {
+    private int idApplication;
     private String name;
     private String description;
     public Schema domainModel;
@@ -20,6 +21,16 @@ public class Application
     public void vista(ViewContainer vista)
     {
         vistaContenida = vista;
+    }
+
+    public int getIdApplication()
+    {
+        return idApplication;
+    }
+
+    public void setIdApplication(int idApplication)
+    {
+        this.idApplication = idApplication;
     }
 
     public String getName() {
@@ -55,7 +66,8 @@ public class Application
     }
 
     @Override
-    public String toString() {
-        return "Application{" + "name=" + name + ", description=" + description + ", domainModel=" + domainModel + ", vistaContenida=" + vistaContenida + '}';
+    public String toString()
+    {
+        return "Application{" + "idApplication=" + idApplication + ", name=" + name + ", description=" + description + ", domainModel=" + domainModel + ", vistaContenida=" + vistaContenida + '}';
     }
 }
